@@ -1,9 +1,12 @@
 {
   "githubUser": "Matin-RK0",
-  "discoverPublicRepositories": true,
+  "discoverPublicRepositories": false,
   "includeForks": false,
   "includeArchived": false,
-  "exclude": ["Matin-RK0/Matin-RK0", "Matin-RK0/protofito"],
+  "exclude": [
+    "Matin-RK0/Matin-RK0",
+    "Matin-RK0/protofito"
+  ],
   "projects": {
     "Matin-RK0/songs_cleaner": {
       "featured": true,
@@ -12,7 +15,11 @@
         "en": "Play local music, tidy up your library, and optionally browse your Telegram music, all from one Flutter app.",
         "fa": "پخش موسیقی محلی، مرتب‌سازی کتابخانه و دسترسی اختیاری به موسیقی تلگرام، در یک اپلیکیشن فلاتر."
       },
-      "tags": ["Flutter", "Dart", "Riverpod"],
+      "tags": [
+        "Flutter",
+        "Dart",
+        "Riverpod"
+      ],
       "category": "mobile",
       "art": "music"
     },
@@ -23,62 +30,27 @@
         "en": "A Python pipeline that collects, normalizes, and deduplicates connection configurations from multiple sources.",
         "fa": "ابزار پایتونی برای جمع‌آوری، یکسان‌سازی و حذف موارد تکراری از تنظیمات اتصال در چند منبع."
       },
-      "tags": ["Python", "asyncio", "Telethon"],
+      "tags": [
+        "Python",
+        "asyncio",
+        "Telethon"
+      ],
       "category": "tools",
       "art": "terminal"
-    },
-    "Matin-RK0/zoodex_flutter": {
-      "featured": true,
-      "name": "Zoodex Flutter",
-      "description": {
-        "en": "A food discovery prototype with vendor cards, category browsing, offers, and a map-based location picker.",
-        "fa": "نمونهٔ اپلیکیشن کشف غذا با کارت فروشگاه، دسته‌بندی‌ها، تخفیف‌ها و انتخاب موقعیت روی نقشه."
-      },
-      "tags": ["Flutter", "Dart", "Dio"],
-      "category": "mobile",
-      "art": "map"
-    },
-    "Matin-RK0/Robot-Freamwork": {
-      "name": "Robot Framework E2E",
-      "description": {
-        "en": "End-to-end test suites for Zoodex web and Android flows, including search, location, and ordering.",
-        "fa": "مجموعهٔ آزمون‌های سرتاسری مسیرهای وب و اندروید زودکس، از جست‌وجو تا انتخاب موقعیت و سفارش."
-      },
-      "tags": ["Robot Framework", "Appium", "Selenium"],
-      "category": "testing",
-      "art": "checks"
-    },
-    "Matin-RK0/blue_music_player": {
-      "name": "Blue Music Player",
-      "description": {
-        "en": "An Android-oriented Flutter music player with on-device song discovery, search, and background playback.",
-        "fa": "موزیک‌پلیر فلاتر با تمرکز بر اندروید، جست‌وجوی آهنگ‌های دستگاه و پخش در پس‌زمینه."
-      },
-      "tags": ["Flutter", "Dart", "just_audio"],
-      "category": "mobile",
-      "art": "wave"
-    },
-    "Matin-RK0/login_page": {
-      "name": "Flutter Login UI",
-      "description": {
-        "en": "A Flutter UI experiment centered on a login screen and reusable interface details.",
-        "fa": "تمرین طراحی رابط کاربری با فلاتر، با تمرکز روی صفحهٔ ورود و جزئیات قابل استفادهٔ دوباره."
-      },
-      "tags": ["Flutter", "Dart", "Google Fonts"],
-      "category": "ui",
-      "art": "window"
     }
   },
   "publishedCaseStudies": [
     {
       "id": "android-game",
-      "name": "Android Game",
-      "nameFa": "بازی اندروید",
+      "name": "Hokm Game",
+      "nameFa": "بازی حکم",
       "description": {
-        "en": "An Android game. The installable build will be available in the download center after its public release.",
-        "fa": "بازی برای اندروید. فایل نصب پس از انتشار عمومی در مرکز دانلود قرار می‌گیرد."
+        "en": "The card game Hokm for Android.",
+        "fa": "بازی ورق حکم برای اندروید."
       },
-      "tags": ["Android"],
+      "tags": [
+        "Android"
+      ],
       "category": "mobile",
       "art": "window",
       "featured": false,
@@ -86,17 +58,35 @@
     },
     {
       "id": "ananas",
-      "name": "Ananas",
-      "nameFa": "آناناس",
+      "name": "Ananas VPN",
+      "nameFa": "آناناس VPN",
       "description": {
-        "en": "An Android app. The installable build will be available in the download center after its public release.",
-        "fa": "اپلیکیشن اندروید آناناس. فایل نصب پس از انتشار عمومی در مرکز دانلود قرار می‌گیرد."
+        "en": "A VPN app for Android.",
+        "fa": "اپلیکیشن وی‌پی‌ان آناناس برای اندروید."
       },
-      "tags": ["Android"],
+      "tags": [
+        "Android"
+      ],
       "category": "mobile",
       "art": "window",
       "featured": false,
       "releaseRepository": "Matin-RK0/ananas-downloads"
+    },
+    {
+      "id": "theta",
+      "name": "Theta Landing",
+      "nameFa": "تتا",
+      "description": {
+        "en": "A landing page introducing the Theta project.",
+        "fa": "صفحهٔ معرفی پروژهٔ تتا."
+      },
+      "tags": [
+        "Web"
+      ],
+      "category": "web",
+      "art": "window",
+      "featured": false,
+      "releaseRepository": "Matin-RK0/theta-downloads"
     }
   ]
 }

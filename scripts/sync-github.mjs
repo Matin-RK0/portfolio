@@ -49,7 +49,7 @@ async function list(path) {
 }
 
 async function pins() {
-  if (!token) return [];
+  if (!token || !config.discoverPublicRepositories) return [];
   try {
     const { data, errors } = await get('/graphql', { body: {
       query: 'query($login:String!){user(login:$login){pinnedItems(first:6,types:[REPOSITORY]){nodes{... on Repository{nameWithOwner isPrivate}}}}}',

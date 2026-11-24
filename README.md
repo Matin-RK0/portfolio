@@ -25,7 +25,7 @@ The checked-in `src/data/releases.json` snapshot makes the local build independe
 Edit [src/config/projects.json](src/config/projects.json) to change the GitHub account or configure projects:
 
 - With `discoverPublicRepositories` enabled, public owned repositories are discovered automatically. Public pinned repositories are preferred when the GitHub token can read the GitHub GraphQL endpoint. Explicit `featured` values override pins. Unlisted projects get their GitHub description and language/topic tags.
-- Use the `projects` map to add display names, bilingual descriptions, tags, an optional live demo, and a category (`mobile`, `tools`, `testing`, `ui`, or `web`). Set `enabled` to `false` or use `exclude` to hide a repository. Set `discoverPublicRepositories` to `false` for a curated profile; the explicit entries and accessible public pins still apply.
+- Use the `projects` map to add display names, bilingual descriptions, tags, an optional live demo, and a category (`mobile`, `tools`, `testing`, `ui`, or `web`). Set `enabled` to `false` or use `exclude` to hide a repository. This portfolio uses a curated list: `discoverPublicRepositories` is `false`, so only explicit projects and public case studies appear.
 - Only put material intended for **public** viewing in `publishedCaseStudies`. For a private project, use an independent public ID and an approved name, description, technologies, artwork, and optional public demo or case study link. Do not include its private repository URL, credentials, source, or release assets here. This is an example of the public shape:
 
 ```json
