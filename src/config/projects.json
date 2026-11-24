@@ -12,8 +12,8 @@
       "featured": true,
       "name": "Songs Cleaner",
       "description": {
-        "en": "Play local music, tidy up your library, and optionally browse your Telegram music, all from one Flutter app.",
-        "fa": "پخش موسیقی محلی، مرتب‌سازی کتابخانه و دسترسی اختیاری به موسیقی تلگرام، در یک اپلیکیشن فلاتر."
+        "en": "Play the songs on your phone and tidy up your library. You can bring in your Telegram music, too, if you want.",
+        "fa": "آهنگ‌های گوشیت رو گوش کن و کتابخونه‌ات رو مرتب کن. اگه خواستی، آهنگ‌های تلگرامت رو هم می‌تونی همین‌جا داشته باشی."
       },
       "tags": [
         "Flutter",
@@ -28,8 +28,8 @@
       "featured": true,
       "name": "ConfigCollector",
       "description": {
-        "en": "Two subscription feeds: the full list of collected connection configurations and a shorter selection of up to 100 entries.",
-        "fa": "دو پیوند اشتراک برای تنظیمات اتصال: فهرست کامل تنظیمات گردآوری‌شده و فهرست کوتاه‌تر شامل حداکثر ۱۰۰ مورد برگزیده."
+        "en": "Pick the full subscription feed for all the collected configs, or try the shorter list of up to 100 picks.",
+        "fa": "دو تا لینک اشتراک داری: یکی برای همهٔ تنظیمات اتصال و یکی برای فهرست کوتاه‌تر با حداکثر ۱۰۰ گزینهٔ برگزیده."
       },
       "tags": [
         "Python",
@@ -65,8 +65,8 @@
       "name": "Hokm: Miras",
       "nameFa": "حکم: میراث",
       "description": {
-        "en": "Play the card game Hokm on Android or in your browser.",
-        "fa": "بازی ورق حکم برای اندروید و مرورگر."
+        "en": "Up for a round of Hokm? Play on Android or jump straight in from your browser.",
+        "fa": "اگه دلت یه دست حکم می‌خواد، می‌تونی روی اندروید یا مستقیم توی مرورگر بازی کنی."
       },
       "tags": [
         "Android",
@@ -107,8 +107,8 @@
       "name": "Ananas VPN",
       "nameFa": "آناناس VPN",
       "description": {
-        "en": "A VPN app for Android.",
-        "fa": "اپلیکیشن وی‌پی‌ان آناناس برای اندروید."
+        "en": "Ananas is a VPN app you can use on Android.",
+        "fa": "آناناس یه اپ VPN برای گوشی‌های اندرویدیه."
       },
       "tags": [
         "Android"
@@ -123,8 +123,8 @@
       "name": "Theta Landing",
       "nameFa": "تتا",
       "description": {
-        "en": "A landing page introducing the Theta project.",
-        "fa": "صفحهٔ معرفی پروژهٔ تتا."
+        "en": "Curious about Theta? Head over to its website to take a look.",
+        "fa": "اگه می‌خوای با تتا آشنا بشی، یه سر به سایتش بزن."
       },
       "tags": [
         "Web"

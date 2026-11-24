@@ -13,8 +13,8 @@
       "id": "matin-rk0/songs_cleaner",
       "name": "Songs Cleaner",
       "description": {
-        "en": "Play local music, tidy up your library, and optionally browse your Telegram music, all from one Flutter app.",
-        "fa": "پخش موسیقی محلی، مرتب‌سازی کتابخانه و دسترسی اختیاری به موسیقی تلگرام، در یک اپلیکیشن فلاتر."
+        "en": "Play the songs on your phone and tidy up your library. You can bring in your Telegram music, too, if you want.",
+        "fa": "آهنگ‌های گوشیت رو گوش کن و کتابخونه‌ات رو مرتب کن. اگه خواستی، آهنگ‌های تلگرامت رو هم می‌تونی همین‌جا داشته باشی."
       },
       "url": "https://github.com/Matin-RK0/songs_cleaner",
       "demo": "",
@@ -33,8 +33,8 @@
       "id": "matin-rk0/configcollector",
       "name": "ConfigCollector",
       "description": {
-        "en": "Two subscription feeds: the full list of collected connection configurations and a shorter selection of up to 100 entries.",
-        "fa": "دو پیوند اشتراک برای تنظیمات اتصال: فهرست کامل تنظیمات گردآوری‌شده و فهرست کوتاه‌تر شامل حداکثر ۱۰۰ مورد برگزیده."
+        "en": "Pick the full subscription feed for all the collected configs, or try the shorter list of up to 100 picks.",
+        "fa": "دو تا لینک اشتراک داری: یکی برای همهٔ تنظیمات اتصال و یکی برای فهرست کوتاه‌تر با حداکثر ۱۰۰ گزینهٔ برگزیده."
       },
       "url": "https://github.com/Matin-RK0/ConfigCollector",
       "demo": "",
