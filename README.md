@@ -40,7 +40,7 @@ Edit [src/config/projects.json](src/config/projects.json) to change the GitHub a
 }
 ```
 
-For public downloads of a project whose source stays private, create a separate **public distribution repository** and add its public `owner/repo` to the case study's `releaseRepository`. The site excludes that repository from the source project list and attaches its public release to the case study instead. GitHub releases attached to private repositories require access to those repositories. See the [Persian release publishing guide](docs/PUBLISHING-FA.md).
+Songs Cleaner and Ananas VPN use [the portfolio repository’s Releases](https://github.com/Matin-RK0/portfolio/releases). Publish tags starting with `songs-cleaner-` and `ananas-` respectively. The site uses each project’s `releaseTagPrefix` to select its release without exposing any private repository. Use `links` for localized public store, web, or subscription links; those links replace the card’s default source and demo actions. See the [Persian publishing guide](docs/PUBLISHING-FA.md).
 
 ## Publish with GitHub Pages
 
@@ -50,7 +50,7 @@ For public downloads of a project whose source stays private, create a separate 
 
 Builds run on pushes to `main` and are scheduled every six hours. For faster updates, a release publishing workflow may send a `repository_dispatch` event with type `release-published` to this repository using suitably scoped credentials. The regular schedule works without configuring another workflow or personal token.
 
-For each public project, the sync ignores drafts and prereleases, prioritizes explicitly named LTS releases, and otherwise uses the stable release marked latest by GitHub. If that endpoint has no result, it falls back to version/date ordering. Release Markdown is sanitized before rendering. Download counts reflect the current snapshot.
+The sync ignores drafts and prereleases and prioritizes LTS releases. In the shared release repository, it matches each project’s prefix before selecting the highest version. For projects using their own repository, it uses GitHub’s latest stable release or falls back to version/date ordering. Release Markdown is sanitized before rendering. Download counts reflect the current snapshot.
 
 See [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages), [GitHub Releases API](https://docs.github.com/en/rest/releases/releases), and [REST API rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api).
 

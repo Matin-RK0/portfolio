@@ -18,3 +18,14 @@ test('honors the stable release marked latest, otherwise uses semantic version',
   assert.deepEqual(selectRelease([latest, higher], release('v3.0.0', { draft: true })), { release: higher, channel: 'stable' });
   assert.equal(selectRelease([release('v4.0.0', { prerelease: true })], null), null);
 });
+
+
+test('groups shared releases by prefix and sorts each project by version', () => {
+  const later = release('songs-cleaner-v1.9.0', { published_at: '2026-02-05T00:00:00Z' });
+  const newer = release('songs-cleaner-v1.10.0');
+  const ananas = release('ananas-v4.0.0-lts');
+  const candidates = [ananas, later, release('songs-cleaner-v9.0.0', { prerelease: true }), newer];
+  assert.deepEqual(selectRelease(candidates, ananas, 'songs-cleaner-'), { release: newer, channel: 'stable' });
+  assert.deepEqual(selectRelease(candidates, null, 'ananas-'), { release: ananas, channel: 'lts' });
+  assert.equal(selectRelease(candidates, ananas, 'hokm-'), null);
+});

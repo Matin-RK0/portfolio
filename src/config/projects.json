@@ -21,14 +21,15 @@
         "Riverpod"
       ],
       "category": "mobile",
-      "art": "music"
+      "art": "music",
+      "releaseTagPrefix": "songs-cleaner-"
     },
     "Matin-RK0/ConfigCollector": {
       "featured": true,
       "name": "ConfigCollector",
       "description": {
-        "en": "A Python pipeline that collects, normalizes, and deduplicates connection configurations from multiple sources.",
-        "fa": "ابزار پایتونی برای جمع‌آوری، یکسان‌سازی و حذف موارد تکراری از تنظیمات اتصال در چند منبع."
+        "en": "Two subscription feeds: the full list of collected connection configurations and a shorter selection of up to 100 entries.",
+        "fa": "دو پیوند اشتراک برای تنظیمات اتصال: فهرست کامل تنظیمات گردآوری‌شده و فهرست کوتاه‌تر شامل حداکثر ۱۰۰ مورد برگزیده."
       },
       "tags": [
         "Python",
@@ -36,25 +37,70 @@
         "Telethon"
       ],
       "category": "tools",
-      "art": "terminal"
+      "art": "terminal",
+      "releases": false,
+      "links": [
+        {
+          "label": {
+            "en": "Full subscription",
+            "fa": "اشتراک کامل"
+          },
+          "url": "https://raw.githubusercontent.com/Matin-RK0/ConfigCollector/refs/heads/main/subscription.txt",
+          "kind": "subscription"
+        },
+        {
+          "label": {
+            "en": "Top 100 subscription",
+            "fa": "اشتراک ۱۰۰ برتر"
+          },
+          "url": "https://raw.githubusercontent.com/Matin-RK0/ConfigCollector/refs/heads/main/subscription_top100.txt",
+          "kind": "subscription"
+        }
+      ]
     }
   },
   "publishedCaseStudies": [
     {
       "id": "android-game",
-      "name": "Hokm Game",
-      "nameFa": "بازی حکم",
+      "name": "Hokm: Miras",
+      "nameFa": "حکم: میراث",
       "description": {
-        "en": "The card game Hokm for Android.",
-        "fa": "بازی ورق حکم برای اندروید."
+        "en": "Play the card game Hokm on Android or in your browser.",
+        "fa": "بازی ورق حکم برای اندروید و مرورگر."
       },
       "tags": [
-        "Android"
+        "Android",
+        "Web"
       ],
       "category": "mobile",
       "art": "window",
       "featured": false,
-      "releaseRepository": "Matin-RK0/android-game-downloads"
+      "links": [
+        {
+          "label": {
+            "en": "Cafe Bazaar",
+            "fa": "دانلود از بازار"
+          },
+          "url": "https://cafebazaar.ir/app/com.theta.hokm?ref=share",
+          "kind": "store"
+        },
+        {
+          "label": {
+            "en": "Myket",
+            "fa": "دانلود از مایکت"
+          },
+          "url": "https://myket.ir/app/com.theta.hokm",
+          "kind": "store"
+        },
+        {
+          "label": {
+            "en": "Play on the web",
+            "fa": "بازی در وب"
+          },
+          "url": "https://web.miras.thetagames.ir/",
+          "kind": "web"
+        }
+      ]
     },
     {
       "id": "ananas",
@@ -70,7 +116,7 @@
       "category": "mobile",
       "art": "window",
       "featured": false,
-      "releaseRepository": "Matin-RK0/ananas-downloads"
+      "releaseTagPrefix": "ananas-"
     },
     {
       "id": "theta",
@@ -86,7 +132,17 @@
       "category": "web",
       "art": "window",
       "featured": false,
-      "releaseRepository": "Matin-RK0/theta-downloads"
+      "links": [
+        {
+          "label": {
+            "en": "Visit Theta Games",
+            "fa": "وب‌سایت تتا"
+          },
+          "url": "https://thetagames.ir/",
+          "kind": "web"
+        }
+      ]
     }
-  ]
+  ],
+  "sharedReleaseRepository": "Matin-RK0/portfolio"
 }

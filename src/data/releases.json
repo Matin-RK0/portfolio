@@ -33,8 +33,8 @@
       "id": "matin-rk0/configcollector",
       "name": "ConfigCollector",
       "description": {
-        "en": "A Python pipeline that collects, normalizes, and deduplicates connection configurations from multiple sources.",
-        "fa": "ابزار پایتونی برای جمع‌آوری، یکسان‌سازی و حذف موارد تکراری از تنظیمات اتصال در چند منبع."
+        "en": "Two subscription feeds: the full list of collected connection configurations and a shorter selection of up to 100 entries.",
+        "fa": "دو پیوند اشتراک برای تنظیمات اتصال: فهرست کامل تنظیمات گردآوری‌شده و فهرست کوتاه‌تر شامل حداکثر ۱۰۰ مورد برگزیده."
       },
       "url": "https://github.com/Matin-RK0/ConfigCollector",
       "demo": "",
@@ -47,7 +47,25 @@
       "art": "terminal",
       "featured": true,
       "issues": "https://github.com/Matin-RK0/ConfigCollector/issues",
-      "release": null
+      "release": null,
+      "links": [
+        {
+          "label": {
+            "en": "Full subscription",
+            "fa": "اشتراک کامل"
+          },
+          "url": "https://raw.githubusercontent.com/Matin-RK0/ConfigCollector/refs/heads/main/subscription.txt",
+          "kind": "subscription"
+        },
+        {
+          "label": {
+            "en": "Top 100 subscription",
+            "fa": "اشتراک ۱۰۰ برتر"
+          },
+          "url": "https://raw.githubusercontent.com/Matin-RK0/ConfigCollector/refs/heads/main/subscription_top100.txt",
+          "kind": "subscription"
+        }
+      ]
     }
   ],
   "caseStudyReleases": {}

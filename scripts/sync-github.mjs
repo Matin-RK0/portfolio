@@ -69,11 +69,14 @@ function repoPath(name) {
   return `/repos/${parts.map(encodeURIComponent).join('/')}`;
 }
 
-async function releasesFor(path) {
-  const all = await list(`${path}/releases?per_page=10`);
-  if (!all.some(r => !r.prerelease && !r.draft && r.published_at)) return null;
-  const lts = selectRelease(all, null);
-  const selected = lts?.channel === 'lts' ? lts : selectRelease(all, await get(`${path}/releases/latest`, { allow404: true }));
+const releaseLists = new Map();
+async function releasesFor(path, tagPrefix = '') {
+  if (!releaseLists.has(path)) releaseLists.set(path, list(`${path}/releases?per_page=10`));
+  const all = await releaseLists.get(path);
+  const best = selectRelease(all, null, tagPrefix);
+  const selected = !best || tagPrefix || best.channel === 'lts'
+    ? best
+    : selectRelease(all, await get(`${path}/releases/latest`, { allow404: true }));
   if (!selected) return null;
   const { release: r, channel } = selected;
   const assets = r.assets_url && r.id ? await list(`${path}/releases/${r.id}/assets?per_page=100`) : r.assets;
@@ -83,14 +86,27 @@ async function releasesFor(path) {
   };
 }
 
+const sharedPath = config.sharedReleaseRepository ? repoPath(config.sharedReleaseRepository) : null;
+let sharedRepository;
+async function sharedReleaseFor(tagPrefix) {
+  if (!sharedPath) throw new Error('Configure sharedReleaseRepository to use releaseTagPrefix.');
+  sharedRepository ??= get(sharedPath);
+  const repo = await sharedRepository;
+  if (repo.private || repo.visibility !== 'public') throw new Error('The release repository must be public.');
+  return releasesFor(sharedPath, tagPrefix);
+}
+
 async function project(repository, pinned, override) {
   const path = repoPath(repository.full_name);
-  const [languages, release] = await Promise.all([override.tags ? {} : get(`${path}/languages`), releasesFor(path)]);
+  const [languages, release] = await Promise.all([
+    override.tags ? {} : get(`${path}/languages`),
+    override.releases === false ? null : override.releaseTagPrefix ? sharedReleaseFor(override.releaseTagPrefix) : releasesFor(path),
+  ]);
   const tags = [...new Set(override.tags ?? [...Object.keys(languages).slice(0, 3), ...repository.topics.slice(0, 4)])];
   const description = override.description || { en: repository.description || '', fa: repository.description || '' };
   return {
     id: repository.full_name.toLowerCase(), name: override.name || repository.name.replaceAll('_', ' '),
-    description, url: repository.html_url, demo: override.demo || repository.homepage || '', tags,
+    description, url: repository.html_url, demo: override.demo || repository.homepage || '', links: override.links, tags,
     category: override.category || '', art: override.art || 'window', featured: override.featured ?? pinned,
     issues: repository.has_issues ? `${repository.html_url}/issues` : '', release,
   };
@@ -104,10 +120,16 @@ const [profile, social, repos, pinned] = await Promise.all([
 const overrides = new Map(Object.entries(config.projects).map(([key, value]) => [key.toLowerCase(), value]));
 const pinnedSet = new Set(pinned.map(name => name.toLowerCase()));
 const excluded = new Set(config.exclude.map(name => name.toLowerCase()));
+if (config.sharedReleaseRepository) excluded.add(config.sharedReleaseRepository.toLowerCase());
 if (process.env.GITHUB_REPOSITORY) excluded.add(process.env.GITHUB_REPOSITORY.toLowerCase());
 const repositories = new Map(repos.map(r => [r.full_name.toLowerCase(), r]));
 const caseStudyReleases = {};
 for (const study of config.publishedCaseStudies ?? []) {
+  if (study.releaseTagPrefix) {
+    const release = await sharedReleaseFor(study.releaseTagPrefix);
+    if (release) caseStudyReleases[study.id] = release;
+    continue;
+  }
   if (!study.releaseRepository) continue;
   const key = study.releaseRepository.toLowerCase();
   excluded.add(key);

@@ -15,7 +15,8 @@ import { copy, type Language } from './copy';
 
 type Asset = { name: string; size: number; downloads: number; url: string };
 type Release = { channel: 'lts' | 'stable'; tag: string; title: string; publishedAt: string; notes: string; url: string; assets: Asset[] };
-type Project = { id: string; name: string; nameFa?: string; description: Record<Language, string>; tags: string[]; art: string; featured: boolean; category: string; url?: string; demo?: string; release: Release | null; caseStudy?: boolean };
+type ProjectLink = { label: Record<Language, string>; url: string; kind: 'store' | 'web' | 'subscription' };
+type Project = { id: string; name: string; nameFa?: string; description: Record<Language, string>; tags: string[]; art: string; featured: boolean; category: string; url?: string; demo?: string; links?: ProjectLink[]; release: Release | null; caseStudy?: boolean };
 type PublicCaseStudy = Omit<Project, 'release' | 'caseStudy' | 'url'>;
 const root = document.querySelector<HTMLDivElement>('#app')!;
 const profile = snapshot.profile;
@@ -25,7 +26,7 @@ const projects: Project[] = [
   ...(snapshot.projects as Project[]).map((project, index) => ({ ...project, featured: featured ? project.featured : index < 3 })),
   ...(config.publishedCaseStudies as PublicCaseStudy[]).map(project => ({
     id: project.id, name: project.name, nameFa: project.nameFa, description: project.description, tags: project.tags,
-    art: project.art, category: project.category, featured: project.featured, demo: project.demo, caseStudy: true, release: caseStudyReleases[project.id] ?? null,
+    art: project.art, category: project.category, featured: project.featured, demo: project.demo, links: project.links, caseStudy: true, release: caseStudyReleases[project.id] ?? null,
   })),
 ].sort((a, b) => Number(b.featured) - Number(a.featured));
 const releases = projects.flatMap(project => project.release ? [{ project, release: project.release }] : [])
@@ -61,6 +62,16 @@ const chips = (tags: string[]) => tags.map(tag => `<span class="chip" dir="ltr">
 
 function projectCard(project: Project) {
   const demo = safeUrl(project.demo), url = safeUrl(project.url);
+  const actions = project.links ? project.links.flatMap(link => {
+    const href = safeUrl(link.url);
+    if (!href) return [];
+    const type = link.kind === 'store' ? 'android' : link.kind === 'subscription' ? 'terminal' : 'upRight';
+    return [`<a class="project-action" href="${href}">${icon(type, 16)} ${plain(link.label[language])}</a>`];
+  }) : [
+    url ? `<a href="${url}">${icon('github', 16)} ${t().source} ${icon('upRight', 15)}</a>` : '',
+    demo ? `<a href="${demo}">${project.caseStudy ? t().caseStudy : t().demo} ${icon('upRight', 15)}</a>` : '',
+  ].filter(Boolean);
+  if (project.release) actions.push(`<a href="#release-${esc(project.id.replace(/[^a-z0-9_-]+/gi, '-'))}">${icon('download', 16)}${t().downloads}</a>`);
   const category = categories.includes(project.category as Category) ? t()[project.category as Category] : '';
   return `<article class="project-card">
     ${cardArt(project.art)}
@@ -72,11 +83,7 @@ function projectCard(project: Project) {
       <h3>${plain(projectTitle(project))}</h3>
       <p dir="auto">${esc(project.description[language] || project.description.en || project.description.fa || '')}</p>
       <div class="tags">${chips(project.tags)}</div>
-      ${url || demo || project.release ? `<div class="project-links">
-        ${url ? `<a href="${url}">${icon('github', 16)} ${t().source} ${icon('upRight', 15)}</a>` : ''}
-        ${demo ? `<a href="${demo}">${project.caseStudy ? t().caseStudy : t().demo} ${icon('upRight', 15)}</a>` : ''}
-        ${project.release ? `<a href="#release-${esc(project.id.replace(/[^a-z0-9_-]+/gi, '-'))}">${icon('download', 16)}${t().downloads}</a>` : ''}
-      </div>` : ''}
+      ${actions.length ? `<div class="project-links">${actions.join('')}</div>` : ''}
     </div>
   </article>`;
 }
